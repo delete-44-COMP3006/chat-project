@@ -1,3 +1,10 @@
 $(window).on("load", function() {
-  console.log('Hello world')
+  $('#send-button').click(() => {
+    let text = $('#message-box').val()
+    addMessage(text)
+  })
 })
+
+function addMessage(text) {
+  $('#chat-history').append(`<div class='chat-message sent'>${text}</div>`)
+}
