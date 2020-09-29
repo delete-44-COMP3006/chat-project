@@ -16,6 +16,28 @@ body {
   padding: 5px;
   border: 1px solid;
   border-color: gray;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-message {
+  padding-top: 1%;
+  border-bottom: 1px solid;
+  max-width: 60%;
+}
+
+.received {
+  align-self: flex-start;
+  text-align: left;
+  border-color: purple;
+}
+
+.sent {
+  align-self: flex-end;
+  text-align: right;
+  border-color: silver;
 }
 
 #chat-form {
