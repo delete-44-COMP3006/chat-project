@@ -23,21 +23,21 @@ body {
 }
 
 .chat-message {
-  padding-top: 1%;
-  border-bottom: 1px solid;
+  padding: 1%;
   max-width: 60%;
+  border-radius: 1rem;
 }
 
 .received {
   align-self: flex-start;
   text-align: left;
-  border-color: purple;
+  background-color: #cb9ce0;
 }
 
 .sent {
   align-self: flex-end;
   text-align: right;
-  border-color: silver;
+  background-color: #e2e2e2;
 }
 
 #chat-form {
