@@ -4,4 +4,5 @@ html {
   line-height: 1.6;
   font-family: 'Quicksand', sans-serif;
   color: #2C2C34;
+  box-sizing: border-box;
 }
