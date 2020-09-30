@@ -1,6 +1,6 @@
 $(window).on('load', function() {
   $('#message-form').submit((e) => {
-    // Retriev message val
+    // Retrieve message value
     let text = $('#message-box').val();
 
     // If message is valid (ie is not empty or just whitespace)...
@@ -26,5 +26,5 @@ $(window).on('load', function() {
 
 function addMessage(text) {
   // Create new HTML element and add it to page
-  $('#chat-history').append(`<div class='chat-message sent'>${text}</div>`)
+  $('#history').append(`<div class='message sent'>${text}</div>`)
 }
