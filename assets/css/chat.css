@@ -2,7 +2,7 @@ body {
   height: 100vh;
 }
 
-#chat-history {
+#history {
   margin-left: auto;
   margin-right: auto;
 
@@ -17,7 +17,7 @@ body {
   flex-direction: column;
 }
 
-.chat-message {
+.message {
   padding: 1rem;
   margin: 0.1rem;
   max-width: 60%;
@@ -39,7 +39,6 @@ body {
 
 #message-form {
   margin: 1rem auto 0 auto;
-
   width: 80%;
 
   display: flex;
@@ -48,32 +47,10 @@ body {
 
 input[type=submit] {
   padding: 3rem;
-
-  border: none;
-
-  background-color: #F7567C;
-  color: white;
-
-  transition: background-color .15s ease-in;
-}
-
-input[type=submit]:hover {
-  cursor: pointer;
-  background-color: #da4366;
 }
 
 textarea[form=message-form] {
   resize: none;
   width: 90%;
   font-family: 'Quicksand', sans-serif;
-  padding: 0.5rem;
-
-  border: none;
-  border-bottom: 2px solid #575766;
-  background-color: #F6F2FF;
-  transition: border 250ms ease-out;
-}
-
-textarea[form=message-form]:focus {
-  border-color: #F7567C;
 }
