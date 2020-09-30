@@ -1,8 +1,14 @@
 $(window).on('load', function() {
   $('#message-form').submit((e) => {
+    // Retriev message val
     let text = $('#message-box').val();
-    $('#message-box').val('');
-    if (text !== '') {
+
+    // If message is valid (ie is not empty or just whitespace)...
+    if (text !== '' && text.trim()) {
+      // Clear message field
+      $('#message-box').val('');
+
+      // Add new message to chat history
       addMessage(text);
     }
 
@@ -10,6 +16,7 @@ $(window).on('load', function() {
   })
 
   $('#message-box').keypress(function (e) {
+    // Submit the form when enter is pressed. for shift + enter, add a newline to message
     if(e.which == 13 && !e.shiftKey) {
       $(this).closest('form').submit();
       e.preventDefault();
@@ -18,5 +25,6 @@ $(window).on('load', function() {
 })
 
 function addMessage(text) {
+  // Create new HTML element and add it to page
   $('#chat-history').append(`<div class='chat-message sent'>${text}</div>`)
 }
