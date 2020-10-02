@@ -6,6 +6,7 @@ html {
   color: #2C2C34;
   box-sizing: border-box;
   background-color: #DCCCFF;
+  height: 100vh;
 }
 
 input {
