@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
 
 html {
   line-height: 1.6;
@@ -38,4 +38,15 @@ input[type=text], input[type=password], textarea {
 
 input[type=text]:focus, input[type=password]:focus, textarea:focus {
   border-color: #F7567C;
+}
+
+a {
+  font-weight: 500;
+  color: #F7567C;
+  text-decoration: none;
+  transition: color .15s ease-in;
+}
+
+a:hover {
+  color: #da4366;
 }

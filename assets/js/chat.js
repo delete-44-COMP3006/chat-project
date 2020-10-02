@@ -18,7 +18,7 @@ $(window).on('load', function() {
   $('#message-box').keypress(function (e) {
     // Submit the form when enter is pressed. for shift + enter, add a newline to message
     if(e.which == 13 && !e.shiftKey) {
-      $(this).closest('form').submit();
+      $('#message-form').submit();
       e.preventDefault();
     }
   });
