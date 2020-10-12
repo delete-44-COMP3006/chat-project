@@ -18,23 +18,43 @@ body {
 }
 
 .message {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-bubble {
   padding: 1rem;
   margin: 0.1rem;
   max-width: 60%;
   border-radius: 1rem;
 }
 
-.received {
+.received > .chat-bubble {
   align-self: flex-start;
   text-align: left;
   color: white;
   background-color: #F7567C;
 }
 
-.sent {
+.sent > .chat-bubble {
   align-self: flex-end;
   text-align: right;
   background-color: #e2e2e2;
+}
+
+.signature {
+  font-style: italic;
+  color: #757575;
+  font-size: 0.75rem;
+  margin: 0.1rem;
+}
+
+.recieved > .signature {
+  align-self: flex-start;
+}
+
+.sent > .signature {
+  align-self: flex-end;
 }
 
 #message-form {
@@ -46,7 +66,7 @@ body {
 }
 
 input[type=submit] {
-  padding: 3rem;
+  padding: 3%;
 }
 
 textarea[form=message-form] {
