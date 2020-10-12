@@ -1,7 +1,9 @@
 $(window).on('load', function() {
+  // Create two demo users
   let user1 = new User('Wheaty')
   let user2 = new User('Oats')
 
+  // And one default message
   let message = new Message('Hi there!', new Date(), user2)
   message.send();
 
@@ -23,7 +25,7 @@ $(window).on('load', function() {
   })
 
   $('#message-box').keypress(function (e) {
-    // Submit the form when enter is pressed. for shift + enter, add a newline to message
+    // Submit the form when enter is pressed. For shift + enter, add a newline to message
     if(e.which == 13 && !e.shiftKey) {
       $('#message-form').submit();
       e.preventDefault();
@@ -41,6 +43,7 @@ function Message(text, date, user) {
   this.user = user;
 }
 
+// Function to send a message & append it to the HTML
 Message.prototype.send = function() {
   // Create new HTML element
   let htmlElement = ''
@@ -54,10 +57,12 @@ Message.prototype.send = function() {
   $('#history').append(htmlElement)
 }
 
+// Returns nicely formatted date & time stamp for message
 Message.prototype.dateString = function() {
   return `${this.date.getHours()}:${this.date.getMinutes()} &middot; ${this.date.getDate()}/${this.date.getMonth()}`
 }
 
+// Returns whether the message is sent (true) or received (false)
 Message.prototype.isSent = function() {
   return this.user.name === 'Wheaty';
 }
