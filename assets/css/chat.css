@@ -7,8 +7,8 @@ body {
   margin-right: auto;
 
   height: 75%;
-  width: 80%;
-  padding: 5px;
+  width: 95%;
+  padding: 2.5px;
   background-color: #F6F2FF;
   border-radius: 0.5rem;
   overflow-y: auto;
@@ -25,8 +25,9 @@ body {
 .chat-bubble {
   padding: 1rem;
   margin: 0.1rem;
-  max-width: 60%;
+  max-width: 80%;
   border-radius: 1rem;
+  word-wrap: break-word;
 }
 
 .received > .chat-bubble {
@@ -59,18 +60,42 @@ body {
 
 #message-form {
   margin: 1rem auto 0 auto;
-  width: 80%;
+  width: 100%;
 
   display: flex;
-  justify-content: space-between;
-}
-
-input[type=submit] {
-  padding: 3%;
+  justify-content: space-around;
 }
 
 textarea[form=message-form] {
   resize: none;
-  width: 90%;
+  width: 80%;
   font-family: 'Quicksand', sans-serif;
+}
+
+input[type=submit] {
+  width: 15%;
+}
+
+@media screen and (min-width: 30em) {
+  #history {
+    width: 80%;
+    padding: 5px;
+  }
+
+  .chat-bubble {
+    max-width: 60%;
+  }
+
+  #message-form {
+    width: 80%;
+  }
+
+  textarea[form=message-form] {
+    resize: none;
+    width: 90%;
+  }
+
+  input[type=submit] {
+    width: 10%;
+  }
 }
