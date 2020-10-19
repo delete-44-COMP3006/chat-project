@@ -1,11 +1,16 @@
 $(window).on('load', function() {
-  // Create two demo users
-  let user1 = new User('Wheaty')
-  let user2 = new User('Oats')
+  if(localStorage.history === undefined) {
+    // Create demo user & store current user
+    let user = new User('Oats')
 
-  // And one default message
-  let message = new Message('Hi there!', new Date(), user2)
-  message.send();
+    // And one default message
+    let message = new Message('Hi there!', new Date(), user)
+    message.send()
+    localStorage.history = []
+  }
+
+  // Initialise stored messages
+  // Iterate over history & send each message
 
   $('#message-form').submit((e) => {
     // Retrieve message value
@@ -17,7 +22,7 @@ $(window).on('load', function() {
       $('#message-box').val('');
 
       // Add new message to chat history
-      let message = new Message(text, new Date(), user1)
+      let message = new Message(text, new Date(), new User('Wheaty'))
       message.send()
     }
 
@@ -45,6 +50,14 @@ function Message(text, date, user) {
 
 // Function to send a message & append it to the HTML
 Message.prototype.send = function() {
+  // Add to history
+  // localStorage.history.append(this)
+
+  // Create new element
+  this.createBubble()
+}
+
+Message.prototype.createBubble = function() {
   // Create new HTML element
   let htmlElement = ''
 
