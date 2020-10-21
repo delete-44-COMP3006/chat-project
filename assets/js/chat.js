@@ -1,16 +1,23 @@
 $(window).on('load', function() {
-  if(localStorage.history === undefined) {
-    // Create demo user & store current user
+  if (localStorage.getItem('messageCounter') === null) {
+    // Start message counter if it does not exist
+    localStorage.setItem('messageCounter', 0)
+
+    // Create demo user and one default message
     let user = new User('Oats')
+    let message = new Message('Hi there!', new Date(), user, localStorage.messageCounter)
 
-    // And one default message
-    let message = new Message('Hi there!', new Date(), user)
+    // Save message
     message.send()
-    localStorage.history = []
-  }
+  } else {
+    // Else find every message up to counter and print it
+    for(var i = 0; i < localStorage.getItem('messageCounter'); i++) {
+      let message = JSON.parse(localStorage.getItem(i));
+      Object.setPrototypeOf(message, Message.prototype)
 
-  // Initialise stored messages
-  // Iterate over history & send each message
+      message.createBubble()
+    }
+  }
 
   $('#message-form').submit((e) => {
     // Retrieve message value
@@ -22,7 +29,7 @@ $(window).on('load', function() {
       $('#message-box').val('');
 
       // Add new message to chat history
-      let message = new Message(text, new Date(), new User('Wheaty'))
+      let message = new Message(text, new Date(), new User('Wheaty'), localStorage.getItem('messageCounter'))
       message.send()
     }
 
@@ -38,20 +45,27 @@ $(window).on('load', function() {
   });
 });
 
+// Returns nicely formatted date & time stamp for message
+function dateString (date) {
+  return `${date.getHours()}:${date.getMinutes()} &middot; ${date.getDate()}/${date.getMonth()}`
+}
+
 function User(name) {
   this.name = name;
 }
 
-function Message(text, date, user) {
+function Message(text, date, user, id) {
   this.text = text;
-  this.date = date;
+  this.date = dateString(date);
   this.user = user;
+  this.id = id;
+
+  localStorage.setItem('messageCounter', ++id);
 }
 
 // Function to send a message & append it to the HTML
 Message.prototype.send = function() {
-  // Add to history
-  // localStorage.history.append(this)
+  localStorage.setItem(this.id, JSON.stringify(this))
 
   // Create new element
   this.createBubble()
@@ -63,16 +77,11 @@ Message.prototype.createBubble = function() {
 
   htmlElement += `<div class="message ${this.isSent() ? 'sent' : 'received'}">`
   htmlElement += `<div class="chat-bubble">${this.text}</div>`
-  htmlElement += `<p class="signature">${this.user.name} &middot; ${this.dateString()}</p>`
+  htmlElement += `<p class="signature">${this.user.name} &middot; ${this.date}</p>`
   htmlElement += '</div>'
 
   // ...and add it to page
   $('#history').append(htmlElement)
-}
-
-// Returns nicely formatted date & time stamp for message
-Message.prototype.dateString = function() {
-  return `${this.date.getHours()}:${this.date.getMinutes()} &middot; ${this.date.getDate()}/${this.date.getMonth()}`
 }
 
 // Returns whether the message is sent (true) or received (false)
