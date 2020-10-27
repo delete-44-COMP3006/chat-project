@@ -12,10 +12,13 @@ $(window).on('load', function() {
   } else {
     // Else find every message up to counter and print it
     for(var i = 0; i < localStorage.getItem('messageCounter'); i++) {
-      let message = JSON.parse(localStorage.getItem(i));
-      Object.setPrototypeOf(message, Message.prototype)
+      let storedItem = localStorage.getItem(i)
+      if (storedItem !== null) {
+        let message = JSON.parse(storedItem);
+        Object.setPrototypeOf(message, Message.prototype)
 
-      message.createBubble()
+        message.createBubble()
+      }
     }
   }
 

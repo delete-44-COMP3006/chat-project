@@ -5,14 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+
     <link rel="stylesheet" href="assets/css/application.css"/>
     <link rel="stylesheet" href="assets/css/chat.css"/>
     <script src="assets/js/chat.js"></script>
+    <script src="assets/js/tests/chat-tests.js"></script>
 
     <title>Chattr</title>
   </head>
 
   <body>
+    <div id="mocha"></div>
+    <script class="mocha-init">
+      mocha.setup('tdd');
+    </script>
+
+    <script class="mocha-exec">
+      mocha.run();
+    </script>
+
     <div id="history">
     </div>
 
